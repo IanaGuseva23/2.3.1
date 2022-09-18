@@ -16,26 +16,26 @@
             <th>Surname</th>
         </tr>
 
-        <tr th:each="user : ${users}">
+        <tr th:each="user : ${user}">
             <td th:text="${user.getId()}">Id</td>
             <td th:text="${user.getName()}">Name</td>
             <td th:text="${user.getSurname}">Surname</td>
 
             <td>
-                <form th:action="@{users/edit/{id}(id=${user.id})}" th:object="${user}">
+                <form th:action="@{user/edit/{id}(id=${user.id})}" th:object="${user}">
                     <br/>
                     <button type="submit">Update</button>
                 </form>
             </td>
             <td>
-                <form th:method="DELETE" th:action="@{users/delete/{id}(id=${user.getId()})}" th:object="${user}">
+                <form th:method="DELETE" th:action="@{user/delete/{id}(id=${user.getId()})}" th:object="${user}">
                     <br/>
                     <button type="submit">Delete</button>
                 </form>
             </td>
         </tr>
     </table>
-    <form th:action="@{users/new}">
+    <form th:action="@{user/new}">
         <br/>
         <br/>
         <button type="submit">New User</button>

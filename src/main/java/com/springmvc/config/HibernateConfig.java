@@ -2,7 +2,6 @@ package com.springmvc.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -20,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource(value = "classpath:db.properties")
+@PropertySource(value = "classpath:hibernate.properties")
 @EnableJpaRepositories("com")
 @EnableTransactionManagement
 public class HibernateConfig {
@@ -35,10 +34,10 @@ public class HibernateConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getRequiredProperty("db.driver"));
-        dataSource.setUrl(environment.getRequiredProperty("db.url"));
-        dataSource.setUsername(environment.getRequiredProperty("db.username"));
-        dataSource.setPassword(environment.getRequiredProperty("db.password"));
+        dataSource.setDriverClassName(environment.getRequiredProperty("hibernate.driver"));
+        dataSource.setUrl(environment.getRequiredProperty("hibernate.url"));
+        dataSource.setUsername(environment.getRequiredProperty("hibernate.username"));
+        dataSource.setPassword(environment.getRequiredProperty("hibernate.password"));
         return dataSource;
     }
 
